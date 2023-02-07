@@ -3,14 +3,13 @@
 </script>
 
 <template>
-    <h1>L'Echapée Livre</h1>
-
+    <header>L'Echapée Livre</header>
 </template>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Lobster+Two&family=Roboto:wght@100&family=Source+Code+Pro:wght@200&display=swap');
 
-h1 {
+header {
     color: #2ba14b;
     font-family: 'Lobster Two', cursive;
     font-size: 60px;
