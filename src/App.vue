@@ -1,4 +1,5 @@
 <script setup>
+import { reactive } from 'vue';
 import { RouterLink, RouterView } from 'vue-router';
 import Header from './components/Header.vue';
 
@@ -9,6 +10,7 @@ import Header from './components/Header.vue';
     <nav>
         <RouterLink to="/">Accueil</RouterLink>
         <RouterLink to="/livre">Nos livres</RouterLink>
+        <RouterLink to="/recherche">Rechercher</RouterLink>
     </nav><br><br>
     <RouterView></RouterView>
 

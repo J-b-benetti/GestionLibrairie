@@ -4,6 +4,7 @@
 
 <template>
     <h1>Bienvenue dans notre librairie</h1>
+    <h2>Notre dernière collection</h2>
 
     <div class="slider">
         <div class="slider-viewport">
@@ -12,12 +13,15 @@
                     <div id="img3">
                         <div id="img4">
                             <div id="img5">
-                                <div class="slider-content">
-                                    <img src="https://source.unsplash.com/800x400/?water">
-                                    <img src="https://source.unsplash.com/800x400/?forest">
-                                    <img src="https://source.unsplash.com/800x400/?mountain">
-                                    <img src="https://source.unsplash.com/800x400/?nature">
-                                    <img src="https://source.unsplash.com/800x400/?field">
+                                <div id="img6">
+                                    <div class="slider-content">
+                                        <img src="../assets/harry_potter.jpg" alt="harry_potter">
+                                        <img src="../assets/seigneur_des_anneaux.jpg" alt="seigneur_des_anneaux">
+                                        <img src="../assets/python.jpg" alt="python">
+                                        <img src="../assets/vue_js.jpg" alt="vue_js">
+                                        <img src="../assets/cyber.jpg" alt="cybersécurité">
+                                        <img src="../assets/spring_boot.jpg" alt="spring-boot">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -31,6 +35,7 @@
             <a href="#img3"></a>
             <a href="#img4"></a>
             <a href="#img5"></a>
+            <a href="#img6"></a>
         </div>
     </div>
 
@@ -47,6 +52,15 @@ h1 {
     text-decoration: underline overline #dbd7d8;
 }
 
+h2 {
+    color: #25592d;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 25px;
+    text-shadow: 2px 2px #88a3cf;
+    text-align: center;
+    box-shadow: 1px 1.5px 5px #c0d1c3;
+}
+
 .slider {
     width: 800px;
     margin: 30px auto;
@@ -55,7 +69,7 @@ h1 {
 
 .slider-viewport {
     width: 800px;
-    height: 400px;
+    height: 500px;
     overflow: hidden;
 }
 
@@ -68,7 +82,7 @@ h1 {
 
 .slider-content img {
     width: 800px;
-    height: 400px;
+    height: 500px;
 }
 
 .slider-nav {
@@ -113,5 +127,10 @@ h1 {
 #img5:target .slider-content {
     -webkit-transform: translateX(-3200px);
     transform: translateX(-3200px);
+}
+
+#img6:target .slider-content {
+    -webkit-transform: translateX(-4000px);
+    transform: translateX(-4000px);
 }
 </style>
