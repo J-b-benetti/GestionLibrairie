@@ -8,7 +8,6 @@ const listeVide = {
     prix: ""
 };
 
-
 let data = reactive({
     formulaireLivre: { ...listeVide },
     listeLivres: []
@@ -18,7 +17,6 @@ function chargeLivre() {
     let dataOptions = {
         "method": "GET"
     };
-
     fetch(BACKEND, dataOptions)
         .then((response) => {
             return response.json();
@@ -60,7 +58,6 @@ function supprimerLivre(entityRef) {
     let options = {
         "method": "DELETE"
     };
-
     fetch(BACKEND + "/" + entityRef, options)
         .then((response) => {
             return response.json();
@@ -74,7 +71,6 @@ function supprimerLivre(entityRef) {
             console.log(error);
         })
 }
-
 
 onMounted(chargeLivre);
 
