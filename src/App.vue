@@ -9,25 +9,19 @@ import Header from './components/Header.vue';
     <nav>
         <RouterLink to="/">Accueil</RouterLink>
         <RouterLink to="/livre">Nos livres</RouterLink>
-    </nav>
+    </nav><br><br>
     <RouterView></RouterView>
 
 </template>
 
 <style scoped>
-nav {
-    width: 100%;
-    font-size: 12px;
-    text-align: center;
-    margin-top: 2rem;
-    font-size: 20px;
-    color: green;
-}
-nav a.router-link-exact-active {
-    color: #fdfdfd;
-}
-nav a.router-link-exact-active:hover {
-    background-color: transparent;
-}
 
+nav a{
+    text-align: center;
+    margin-top: 5rem;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 4rem;
+    text-decoration: none;
+}
 </style>
