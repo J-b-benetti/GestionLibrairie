@@ -8,9 +8,9 @@ import Header from './components/Header.vue';
 <template>
     <Header></Header>
     <nav>
-        <RouterLink to="/">Accueil</RouterLink>
-        <RouterLink to="/livre">Nos livres</RouterLink>
-        <RouterLink to="/recherche">Rechercher</RouterLink>
+        <RouterLink class="nav" to="/">Accueil</RouterLink>
+        <RouterLink class="nav" to="/livre">Nos livres</RouterLink>
+        <RouterLink class="nav" to="/recherche">Rechercher</RouterLink>
     </nav><br><br>
     <RouterView></RouterView>
 
@@ -18,12 +18,17 @@ import Header from './components/Header.vue';
 
 <style scoped>
 
-nav a{
-    text-align: center;
-    margin-top: 5rem;
-    font-size: 20px;
-    font-family: 'Times New Roman', Times, serif;
+.nav {
+    display: inline-flex;
+    justify-content: center;
     margin-top: 4rem;
-    text-decoration: none;
+    padding-left: 250px;
+    font-size: 25px;
+    font-family: 'Times New Roman', Times, serif;
+    color: #fdfdfd;
+}
+
+.nav:hover {
+    color: #3a2885;
 }
 </style>
