@@ -53,13 +53,34 @@ function ajouteLivre() {
         })
 }
 
-function modifierQuantite(entityRef) {
+function augmenterQuantite(entityRef) {
     let options = {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({ id: entityRef, titre: data.formulaireLivre.titre, qtestock: 1, prix: data.formulaireLivre.prix})
+        body: JSON.stringify({titre:data.listeLivres.titre, qtestock:data.listeLivres.qtestock ++, prix:data.listeLivres.prix})
+    };
+    fetch(BACKEND + "/" + entityRef, options)
+        .then((response) => {
+            return response.json();
+        })
+        .then((dataJson) => {
+            //console.log(dataJson);
+            chargeLivre();
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+}
+
+function diminuerQuantite(entityRef) {
+    let options = {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ id: entityRef, titre: data.listeLivres.titre, qtestock: data.listeLivres.qtestock --, prix: data.listeLivres.prix})
     };
     fetch(BACKEND + "/" + entityRef, options)
         .then((response) => {
@@ -131,12 +152,12 @@ onMounted(chargeLivre);
             <tr v-for="livre in data.listeLivres" :key="livre.id">
                 <td>{{ livre.id }}</td>
                 <td>{{ livre.titre }}</td>
-                <td>{{ livre.qtestock }}</td>
+                <td><button class="boutonModifier" @click="diminuerQuantite(livre.id)"><font-awesome-icon icon="minus" /></button> {{ livre.qtestock }} <button class="boutonModifier" @click="augmenterQuantite(livre.id)"><font-awesome-icon icon="plus" /></button></td>
                 <td>{{ livre.prix }}</td>
-                <td>
+                <!--<td>
                     <button class="boutonModifier" @click="modifierQuantite(livre.id)"><font-awesome-icon
-                            icon="pen" />Modifier</button>
-                </td>
+                            icon="plus" />Modifier</button>
+                </td>-->
                 <td>
                     <button class="boutonSupprimer" @click="supprimerLivre(livre.id)"><font-awesome-icon
                             icon="trash" />Supprimer</button>

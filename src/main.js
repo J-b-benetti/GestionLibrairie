@@ -7,10 +7,12 @@ import './assets/main.css'
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import { faTrash  } from '@fortawesome/free-solid-svg-icons';
-import { faPen  } from '@fortawesome/free-solid-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faMinus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-library.add(faPhone, faTrash, faPen);
+
+library.add(faPhone, faTrash, faPlus, faMinus);
 
 
 const app = createApp(App)

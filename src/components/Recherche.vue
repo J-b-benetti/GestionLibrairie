@@ -33,7 +33,6 @@ function rechercherLivre() {
 
 onMounted(rechercherLivre);
 
-
 </script>
 
 <template>
