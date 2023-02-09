@@ -22,7 +22,7 @@ function chargeLivre() {
             return response.json();
         })
         .then((dataJson) => {
-            console.log(dataJson);
+            //console.log(dataJson);
             data.listeLivres = dataJson;
         })
         .catch((error) => {
@@ -44,7 +44,7 @@ function ajouteLivre() {
             return response.json();
         })
         .then((dataJson) => {
-            console.log(dataJson);
+            //console.log(dataJson);
             data.listeLivres = dataJson;
             chargeLivre();
         })
@@ -55,18 +55,18 @@ function ajouteLivre() {
 
 function modifierQuantite(entityRef) {
     let options = {
-        method: "PATCH",
+        method: "PUT",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({ qtestock: 1})
+        body: JSON.stringify({ id: entityRef, titre: data.formulaireLivre.titre, qtestock: 1, prix: data.formulaireLivre.prix})
     };
     fetch(BACKEND + "/" + entityRef, options)
         .then((response) => {
             return response.json();
         })
         .then((dataJson) => {
-            console.log(dataJson);
+            //console.log(dataJson);
             chargeLivre();
         })
         .catch((error) => {
@@ -138,7 +138,7 @@ onMounted(chargeLivre);
                             icon="pen" />Modifier</button>
                 </td>
                 <td>
-                    <button class="boutonSupprimer" @submit.prevent="supprimerLivre(livre.id)"><font-awesome-icon
+                    <button class="boutonSupprimer" @click="supprimerLivre(livre.id)"><font-awesome-icon
                             icon="trash" />Supprimer</button>
                 </td>
             </tr>
