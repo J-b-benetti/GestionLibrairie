@@ -37,7 +37,7 @@ function ajouteLivre() {
         body: JSON.stringify(data.formulaireLivre),
         headers: {
             "Content-Type": "application/json",
-        },
+        }
     };
     fetch(BACKEND + "?sort=id,desc", options)
         .then((response) => {
@@ -51,7 +51,27 @@ function ajouteLivre() {
         .catch((error) => {
             console.log(error);
         })
+}
 
+function modifierQuantite(entityRef) {
+    let options = {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ qtestock: 1})
+    };
+    fetch(BACKEND + "/" + entityRef, options)
+        .then((response) => {
+            return response.json();
+        })
+        .then((dataJson) => {
+            console.log(dataJson);
+            chargeLivre();
+        })
+        .catch((error) => {
+            console.log(error);
+        })
 }
 
 function supprimerLivre(entityRef) {
@@ -114,7 +134,12 @@ onMounted(chargeLivre);
                 <td>{{ livre.qtestock }}</td>
                 <td>{{ livre.prix }}</td>
                 <td>
-                    <button class="boutonSupprimer" @click="supprimerLivre(livre.id)">Supprimer</button>
+                    <button class="boutonModifier" @click="modifierQuantite(livre.id)"><font-awesome-icon
+                            icon="pen" />Modifier</button>
+                </td>
+                <td>
+                    <button class="boutonSupprimer" @submit.prevent="supprimerLivre(livre.id)"><font-awesome-icon
+                            icon="trash" />Supprimer</button>
                 </td>
             </tr>
         </table>
@@ -162,14 +187,27 @@ label {
     height: 30px;
     border-radius: 5px;
     background-image: linear-gradient(0.25turn, #3a2885, #2ba14b);
+    cursor: pointer;
 }
 
 .boutonSubmit:hover {
     background-image: linear-gradient(0.25turn, #2ba14b, #3a2885);
 }
 
+.boutonSupprimer {
+    border-radius: 5px white;
+    height: 25px;
+    cursor: pointer;
+}
+
+.boutonModifier {
+    border-radius: 5px white;
+    height: 25px;
+    cursor: pointer;
+}
+
 .tab {
-    margin-left: 40%;
+    margin-left: 30%;
     position: absolute;
     justify-content: center;
 }
