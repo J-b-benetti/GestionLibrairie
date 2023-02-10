@@ -59,7 +59,7 @@ function augmenterQuantite(entityRef) {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({titre:data.listeLivres.titre, qtestock:data.listeLivres.qtestock ++, prix:data.listeLivres.prix})
+        body: JSON.stringify({id:entityRef, titre:data.listeLivres.titre, qtestock:data.listeLivres.qtestock ++, prix:data.listeLivres.prix})
     };
     fetch(BACKEND + "/" + entityRef, options)
         .then((response) => {
