@@ -142,7 +142,8 @@ onMounted(chargeLivre);
                 <input id="prix" class="input" name="prix" v-model="data.formulaireLivre.prix" placeholder="Prix" />
             </div><br>
             <button class="boutonSubmit" type="submit">Ajouter</button>
-            <download-csv class="export" :data="data.listeLivres" name="liste_livres.csv"><button class="boutonExport">Export CSV</button></download-csv>
+            <download-csv class="export" :data="data.listeLivres" name="liste_livres.csv"><button class="boutonExport"><font-awesome-icon class="downloadIcon"
+                            icon="download" />Export CSV</button></download-csv>
         </form>
     </div><br><br>
 
@@ -165,7 +166,7 @@ onMounted(chargeLivre);
                             icon="plus" /></button></td>
                 <td>{{ livre.prix }}</td>
                 <td>
-                    <button class="boutonSupprimer" @click="supprimerLivre(livre.id)"><font-awesome-icon
+                    <button class="boutonSupprimer" @click="supprimerLivre(livre.id)"><font-awesome-icon class="trashIcon"
                             icon="trash" />Supprimer</button>
                 </td>
             </tr>
@@ -185,8 +186,14 @@ onMounted(chargeLivre);
 .boutonExport {
     cursor: pointer;
     height: 30px;
+    padding-left: 3px;
+    padding-right: 10px;
     border-radius: 5px;
     background-image: linear-gradient(0.25turn, #3a2885, #2ba14b);
+}
+
+.downloadIcon {
+    padding-right: 5px;
 }
 
 h1 {
@@ -237,6 +244,10 @@ label {
     border-radius: 5px white;
     height: 25px;
     cursor: pointer;
+}
+
+.trashIcon {
+    padding-right: 5px;
 }
 
 .boutonModifier {

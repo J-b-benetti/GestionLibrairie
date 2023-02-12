@@ -10,10 +10,11 @@ import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import { faTrash  } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
+import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 
-library.add(faPhone, faTrash, faPlus, faMinus);
+library.add(faPhone, faTrash, faPlus, faMinus, faDownload);
 
 
 const app = createApp(App)
