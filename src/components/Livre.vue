@@ -89,6 +89,9 @@ function diminuerQuantite(entityRef, titleref, qtRef, prixRef) {
         })
         .then((dataJson) => {
             //console.log(dataJson);
+            if (qtRef <= 0) {
+                supprimerLivre(entityRef);
+            }
             chargeLivre();
         })
         .catch((error) => {
