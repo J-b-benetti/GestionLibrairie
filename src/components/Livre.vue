@@ -59,7 +59,7 @@ function augmenterQuantite(entityRef, titleref, qtRef, prixRef) {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({id: entityRef, titre: titleref, qtestock: qtRef += 1, prix: prixRef})
+        body: JSON.stringify({ id: entityRef, titre: titleref, qtestock: qtRef += 1, prix: prixRef })
     };
     fetch(BACKEND, options)
         .then((response) => {
@@ -81,7 +81,7 @@ function diminuerQuantite(entityRef, titleref, qtRef, prixRef) {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({id: entityRef, titre: titleref, qtestock: qtRef -= 1, prix: prixRef})
+        body: JSON.stringify({ id: entityRef, titre: titleref, qtestock: qtRef -= 1, prix: prixRef })
     };
     fetch(BACKEND, options)
         .then((response) => {
@@ -153,7 +153,11 @@ onMounted(chargeLivre);
             <tr v-for="livre in data.listeLivres" :key="livre.id">
                 <td>{{ livre.id }}</td>
                 <td>{{ livre.titre }}</td>
-                <td><button class="boutonModifier" @click="diminuerQuantite(livre.id, livre.titre, livre.qtestock, livre.prix)"><font-awesome-icon icon="minus" /></button> {{ livre.qtestock }} <button class="boutonModifier" @click="augmenterQuantite(livre.id, livre.titre, livre.qtestock, livre.prix)"><font-awesome-icon icon="plus" /></button></td>
+                <td><button class="boutonModifier"
+                        @click="diminuerQuantite(livre.id, livre.titre, livre.qtestock, livre.prix)"><font-awesome-icon
+                            icon="minus" /></button> {{ livre.qtestock }} <button class="boutonModifier"
+                        @click="augmenterQuantite(livre.id, livre.titre, livre.qtestock, livre.prix)"><font-awesome-icon
+                            icon="plus" /></button></td>
                 <td>{{ livre.prix }}</td>
                 <td>
                     <button class="boutonSupprimer" @click="supprimerLivre(livre.id)"><font-awesome-icon
