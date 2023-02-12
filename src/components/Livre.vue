@@ -53,20 +53,21 @@ function ajouteLivre() {
         })
 }
 
-function augmenterQuantite(entityRef) {
+function augmenterQuantite(entityRef, titleref, qtRef, prixRef) {
     let options = {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({id:entityRef, titre:data.listeLivres.titre, qtestock:data.listeLivres.qtestock ++, prix:data.listeLivres.prix})
+        body: JSON.stringify({id: entityRef, titre: titleref, qtestock: qtRef += 1, prix: prixRef})
     };
-    fetch(BACKEND + "/" + entityRef, options)
+    fetch(BACKEND, options)
         .then((response) => {
             return response.json();
         })
         .then((dataJson) => {
             //console.log(dataJson);
+            //console.log(entityRef, titleref, qtRef);
             chargeLivre();
         })
         .catch((error) => {
@@ -74,15 +75,15 @@ function augmenterQuantite(entityRef) {
         })
 }
 
-function diminuerQuantite(entityRef) {
+function diminuerQuantite(entityRef, titleref, qtRef, prixRef) {
     let options = {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({ id: entityRef, titre: data.listeLivres.titre, qtestock: data.listeLivres.qtestock --, prix: data.listeLivres.prix})
+        body: JSON.stringify({id: entityRef, titre: titleref, qtestock: qtRef -= 1, prix: prixRef})
     };
-    fetch(BACKEND + "/" + entityRef, options)
+    fetch(BACKEND, options)
         .then((response) => {
             return response.json();
         })
@@ -152,12 +153,8 @@ onMounted(chargeLivre);
             <tr v-for="livre in data.listeLivres" :key="livre.id">
                 <td>{{ livre.id }}</td>
                 <td>{{ livre.titre }}</td>
-                <td><button class="boutonModifier" @click="diminuerQuantite(livre.id)"><font-awesome-icon icon="minus" /></button> {{ livre.qtestock }} <button class="boutonModifier" @click="augmenterQuantite(livre.id)"><font-awesome-icon icon="plus" /></button></td>
+                <td><button class="boutonModifier" @click="diminuerQuantite(livre.id, livre.titre, livre.qtestock, livre.prix)"><font-awesome-icon icon="minus" /></button> {{ livre.qtestock }} <button class="boutonModifier" @click="augmenterQuantite(livre.id, livre.titre, livre.qtestock, livre.prix)"><font-awesome-icon icon="plus" /></button></td>
                 <td>{{ livre.prix }}</td>
-                <!--<td>
-                    <button class="boutonModifier" @click="modifierQuantite(livre.id)"><font-awesome-icon
-                            icon="plus" />Modifier</button>
-                </td>-->
                 <td>
                     <button class="boutonSupprimer" @click="supprimerLivre(livre.id)"><font-awesome-icon
                             icon="trash" />Supprimer</button>
