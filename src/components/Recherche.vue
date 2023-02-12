@@ -19,19 +19,23 @@ function rechercherLivre() {
     let options = {
         "method": "GET"
     };
-    fetch(BACKEND + "?motcle=" + data.motcle, options)
+    fetch(BACKEND + "?search=" + data.motcle, options)
         .then((response) => {
             return response.json();
         })
         .then((dataJson) => {
             console.log(dataJson);
+            data.listeLivres = dataJson;
+            if (data.motcle.length == 0) {
+                alert("Veuillez saisir un mot clé dans la barre de recherche");
+            }
         })
         .catch((error) => {
             console.log(error);
         })
 }
 
-onMounted(rechercherLivre);
+//onMounted(rechercherLivre);
 
 </script>
 
@@ -47,10 +51,27 @@ onMounted(rechercherLivre);
         </form>
     </div>
 
+    <div class="tab">
+        <table>
+            <caption class="titreTab">Liste des livres</caption>
+            <tr>
+                <th>Code</th>
+                <th>Titre</th>
+                <th>Quantité en stock</th>
+                <th>Prix</th>
+            </tr>
+            <tr v-for="livre in data.listeLivres" :key="livre.id">
+                <td>{{ livre.id }}</td>
+                <td>{{ livre.titre }}</td>
+                <td>{{ livre.qtestock }} </td>
+                <td>{{ livre.prix }}</td>
+            </tr>
+        </table>
+    </div>
+
 </template>
 
 <style scoped>
-
 h1 {
     color: #25592d;
     font-size: 25px;
@@ -96,5 +117,36 @@ label {
 
 .boutonSearch:hover {
     background-image: linear-gradient(0.25turn, #2ba14b, #3a2885);
+}
+
+.tab {
+    display: inline-block;
+    margin-left: 10%;
+    position: absolute;
+    justify-content: center;
+}
+
+td,
+th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    color: #fdfdfd;
+    text-align: center;
+}
+
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #232623;
+    color: rgb(255, 255, 255);
+}
+
+.titreTab {
+    font-size: 30px;
+    font-weight: bold;
+    font-style: oblique;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #fdfdfd;
 }
 </style>
