@@ -14,6 +14,7 @@
     "@fortawesome/vue-fontawesome": "^3.0.0-5",
     "v-reset-input": "^1.1.2",
     "vue": "^3.2.45",
+    "vue-json-csv": "^2.1.0",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {

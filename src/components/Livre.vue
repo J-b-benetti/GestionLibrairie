@@ -120,6 +120,7 @@ onMounted(chargeLivre);
 
 
 <template>
+
     <div class="formulaire">
         <!-- Un formulaire pour saisir les valeurs de la catégorie à ajouter -->
         <form @submit.prevent="ajouteLivre">
@@ -138,6 +139,7 @@ onMounted(chargeLivre);
                 <input id="prix" class="input" name="prix" v-model="data.formulaireLivre.prix" placeholder="Prix" />
             </div><br>
             <button class="boutonSubmit" type="submit">Ajouter</button>
+            <download-csv class="export" :data="data.listeLivres" name="liste_livres.csv"><button class="boutonExport">Export CSV</button></download-csv>
         </form>
     </div><br><br>
 
@@ -172,6 +174,18 @@ onMounted(chargeLivre);
 
 
 <style scoped>
+.export {
+    margin-right: 2rem;
+    display: inline-block;
+    margin-left: 0.6rem;
+}
+.boutonExport {
+    cursor: pointer;
+    height: 30px;
+    border-radius: 5px;
+    background-image: linear-gradient(0.25turn, #3a2885, #2ba14b);
+}
+
 h1 {
     color: #25592d;
     font-size: 25px;

@@ -24,7 +24,7 @@ function rechercherLivre() {
             return response.json();
         })
         .then((dataJson) => {
-            console.log(dataJson);
+            //console.log(dataJson);
             data.listeLivres = dataJson;
             if (data.motcle.length == 0) {
                 alert("Veuillez saisir un mot clé dans la barre de recherche");
@@ -35,17 +35,18 @@ function rechercherLivre() {
         })
 }
 
-//onMounted(rechercherLivre);
+
 
 </script>
 
 <template>
     <div class="forulaireRecherche">
-        <form @submit.prevent="rechercherLivre">
+        <form @submit.prevent="rechercherLivre" @keyup.enter="rechercherLivre">
             <h1>Rechercher un livre</h1>
             <div>
                 <label for="titre">Entrer un titre de livre</label><br>
-                <input id="recherche" class="input" name="titre" v-model="data.motcle" placeholder="Rechercher" />
+                <input id="recherche" class="input" name="titre" type="text" v-model="data.motcle"
+                    placeholder="Rechercher" />
                 <button class="boutonSearch" type="submit">Rechercher</button>
             </div>
         </form>

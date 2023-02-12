@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+import JsonCSV from 'vue-json-csv'
 
 import './assets/main.css'
 
@@ -19,6 +20,7 @@ const app = createApp(App)
 
 app.use(router)
 app.component("font-awesome-icon", FontAwesomeIcon)
+app.component('downloadCsv', JsonCSV)
 
 app.mount('#app')
 
