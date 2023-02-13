@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <header>L'Echapée Livre</header>
+    <header>L'Echappée Livre</header>
 </template>
 
 <style scoped>
