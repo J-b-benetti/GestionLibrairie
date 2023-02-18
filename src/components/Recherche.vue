@@ -29,6 +29,7 @@ function rechercherLivre() {
             if (data.motcle.length == 0) {
                 alert("Veuillez saisir un mot clé dans la barre de recherche");
             }
+            data.motcle = '';
         })
         .catch((error) => {
             console.log(error);
