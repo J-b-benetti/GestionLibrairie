@@ -31,26 +31,40 @@ function chargeLivre() {
 }
 
 function ajouteLivre() {
-    // Ajouter une catégorie avec les données du formulaire
-    const options = {
-        method: "POST", // Verbe HTTP POST pour ajouter un enregistrement
-        body: JSON.stringify(data.formulaireLivre),
-        headers: {
-            "Content-Type": "application/json",
-        }
-    };
-    fetch(BACKEND + "?sort=id,desc", options)
-        .then((response) => {
-            return response.json();
-        })
-        .then((dataJson) => {
-            //console.log(dataJson);
-            data.listeLivres = dataJson;
-            chargeLivre();
-        })
-        .catch((error) => {
-            console.log(error);
-        })
+    if (data.formulaireLivre.titre.length == 0) {
+        alert("Veuillez saisir un titre!");
+    }
+    else if (data.formulaireLivre.qtestock.length == 0) {
+        alert("Veuillez saisir une quantité!");
+    }
+    else if (data.formulaireLivre.prix.length == 0) {
+        alert("Veuillez saisir un prix!");
+    } else {
+        // Ajouter une catégorie avec les données du formulaire
+        const options = {
+            method: "POST", // Verbe HTTP POST pour ajouter un enregistrement
+            body: JSON.stringify(data.formulaireLivre),
+            headers: {
+                "Content-Type": "application/json",
+            }
+        };
+        fetch(BACKEND + "?sort=id,desc", options)
+            .then((response) => {
+                return response.json();
+            })
+            .then((dataJson) => {
+                //console.log(dataJson);
+                data.listeLivres = dataJson;
+                chargeLivre();
+
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+        data.formulaireLivre.titre = '';
+        data.formulaireLivre.qtestock = '';
+        data.formulaireLivre.prix = '';
+    }
 }
 
 function augmenterQuantite(entityRef, titleref, qtRef, prixRef) {
@@ -123,7 +137,6 @@ onMounted(chargeLivre);
 
 
 <template>
-
     <div class="formulaire">
         <!-- Un formulaire pour saisir les valeurs de la catégorie à ajouter -->
         <form @submit.prevent="ajouteLivre">
@@ -142,8 +155,9 @@ onMounted(chargeLivre);
                 <input id="prix" class="input" name="prix" v-model="data.formulaireLivre.prix" placeholder="Prix" />
             </div><br>
             <button class="boutonSubmit" type="submit">Ajouter</button>
-            <download-csv class="export" :data="data.listeLivres" name="liste_livres.csv"><button class="boutonExport"><font-awesome-icon class="downloadIcon"
-                            icon="download" />Export CSV</button></download-csv>
+            <download-csv class="export" :data="data.listeLivres" name="liste_livres.csv"><button
+                    class="boutonExport"><font-awesome-icon class="downloadIcon" icon="download" />Export
+                    CSV</button></download-csv>
         </form>
     </div><br><br>
 
@@ -172,8 +186,6 @@ onMounted(chargeLivre);
             </tr>
         </table>
     </div>
-
-
 </template>
 
 
@@ -183,6 +195,7 @@ onMounted(chargeLivre);
     display: inline-block;
     margin-left: 0.6rem;
 }
+
 .boutonExport {
     cursor: pointer;
     height: 30px;
