@@ -37,8 +37,14 @@ function ajouteLivre() {
     else if (data.formulaireLivre.qtestock.length == 0) {
         alert("Veuillez saisir une quantité!");
     }
+    else if (data.formulaireLivre.qtestock <= 0) {
+        alert("Veuillez saisir une quantité positive");
+    }
     else if (data.formulaireLivre.prix.length == 0) {
         alert("Veuillez saisir un prix!");
+    } 
+    else if (data.formulaireLivre.prix <= 0) {
+        alert("Veuillez saisir un prix positif");
     } else {
         // Ajouter une catégorie avec les données du formulaire
         const options = {

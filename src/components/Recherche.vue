@@ -16,24 +16,28 @@ let data = reactive({
 
 
 function rechercherLivre() {
-    let options = {
-        "method": "GET"
-    };
-    fetch(BACKEND + "?search=" + data.motcle, options)
-        .then((response) => {
-            return response.json();
-        })
-        .then((dataJson) => {
-            //console.log(dataJson);
-            data.listeLivres = dataJson;
-            if (data.motcle.length == 0) {
-                alert("Veuillez saisir un mot clé dans la barre de recherche");
-            }
-            data.motcle = '';
-        })
-        .catch((error) => {
-            console.log(error);
-        })
+    if (data.motcle.length == 0) {
+        alert("Veuillez saisir un mot clé dans la barre de recherche");
+    } else {
+        let options = {
+            "method": "GET"
+        };
+        fetch(BACKEND + "?search=" + data.motcle, options)
+            .then((response) => {
+                return response.json();
+            })
+            .then((dataJson) => {
+                //console.log(dataJson);
+                data.listeLivres = dataJson;
+
+                data.motcle = '';
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+        data.motcle = '';
+    }
+
 }
 
 
@@ -70,7 +74,6 @@ function rechercherLivre() {
             </tr>
         </table>
     </div>
-
 </template>
 
 <style scoped>
