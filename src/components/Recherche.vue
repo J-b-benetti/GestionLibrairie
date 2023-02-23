@@ -126,7 +126,7 @@ label {
 
 .tab {
     display: inline-block;
-    margin-left: 10%;
+    margin-left: 15%;
     position: absolute;
     justify-content: center;
 }

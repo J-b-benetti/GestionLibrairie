@@ -20,15 +20,16 @@ import Header from './components/Header.vue';
 
 .nav {
     display: inline-flex;
+    text-align: center;
     justify-content: center;
     margin-top: 4rem;
-    padding-left: 250px;
+    padding-left: 20% /*250px*/;
     font-size: 25px;
     font-family: 'Times New Roman', Times, serif;
     color: #fdfdfd;
 }
 
 .nav:hover {
-    color: #3a2885;
+    color: #2ba14b;
 }
 </style>
